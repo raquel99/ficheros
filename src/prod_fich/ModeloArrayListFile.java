@@ -60,25 +60,25 @@ public class ModeloArrayListFile extends ModeloArrayList
     private void cargarDesdeFichero() {
         File fproductos =new File (nombrefichero);
         if ( !fproductos.exists() ){
-            return; // No hay datos
+            return; 
          }
          try{
-          // Creo Flujo de tipo fichero de byte 
+          
           FileInputStream fin= new FileInputStream(fproductos);
-          // Creo un Flujo de objetos sobre el fichero
+          
           ObjectInputStream oin= new ObjectInputStream(fin);
           
           try {
                Producto pro = (Producto) oin.readObject();
                while ( true ){
-                 lista.add(pro); // Añado el producto 
+                 lista.add(pro); 
                  pro = (Producto) oin.readObject();  
                  }
              }
            catch (IOException ex){} 
           
-          oin.close(); // Cierro el fujo de objectos
-          fin.close(); // Cierro el flujo de 
+          oin.close(); 
+          fin.close(); 
         }catch(IOException ioe){
              ioe.printStackTrace();
          }    
